@@ -1,0 +1,3 @@
+# Copia este archivo como .env y completa las credenciales
+# OpenAI API Key
+OPENAI_API_KEY=''
