@@ -49,7 +49,8 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 ## Estado Actual
 
-* Fase actual: **Branding y configuración base**
+* Fase actual: **Entrenamiento con FAQs y Ajustes Conversacionales
+Objetivo**
 * Entorno de desarrollo: **GitHub / Streamlit Cloud**
 * Fecha de inicio: Mayo-09-2025
 
