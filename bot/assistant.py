@@ -1,3 +1,4 @@
+
 import openai
 import os
 import json
@@ -32,6 +33,7 @@ class TixOBot:
         self.persona = persona
         self.default_language = default_language
         self.conversation_history: List[Dict[str, str]] = []
+        self.last_response = ""  # Almacenar la última respuesta para evitar duplicados
         
     def get_welcome_message(self, language: Optional[str] = None) -> str:
         """
@@ -44,7 +46,9 @@ class TixOBot:
             Mensaje de bienvenida formateado
         """
         lang = language or self.default_language
-        return WELCOME_MESSAGES.get(lang, WELCOME_MESSAGES["es"])
+        welcome_msg = WELCOME_MESSAGES.get(lang, WELCOME_MESSAGES["es"])
+        self.last_response = welcome_msg  # Guardamos el mensaje de bienvenida para evitar duplicados
+        return welcome_msg
     
     def _check_for_human_handoff_request(self, message: str, language: str) -> bool:
         """
@@ -79,42 +83,64 @@ class TixOBot:
         Returns:
             Respuesta generada
         """
+        # Evitar procesar mensajes vacíos
+        if not user_message.strip():
+            return ""
+            
         lang = language or self.default_language
         
+        # Evitar duplicar el último mensaje del usuario si es idéntico
+        if self.conversation_history and \
+           self.conversation_history[-1].get("role") == "user" and \
+           self.conversation_history[-1].get("content") == user_message:
+            return self.last_response
+            
         self.conversation_history.append({"role": "user", "content": user_message})
         
         if self._check_for_human_handoff_request(user_message, lang):
             response = HUMAN_HANDOFF_MESSAGES.get(lang, HUMAN_HANDOFF_MESSAGES["es"])
             self.conversation_history.append({"role": "assistant", "content": response})
+            self.last_response = response
             return response
 
-        faq_match_confidence = find_best_faq_match(user_message, lang)
-        print(f"DEBUG - faq_match_confidence: {faq_match_confidence}")
+        # Evitar buscar coincidencias de FAQ si el mensaje es demasiado similar a la última respuesta del bot
+        # para evitar la recursión infinita
+        should_check_faq = True
+        if self.last_response and user_message.lower() in self.last_response.lower():
+            should_check_faq = False
+            
+        faq_match = None
+        confidence = 0.0
+        
+        if should_check_faq:
+            faq_match_confidence = find_best_faq_match(user_message, lang)
+            print(f"DEBUG - faq_match_confidence: {faq_match_confidence}")
 
-        if isinstance(faq_match_confidence, tuple):
-            faq_match, confidence = faq_match_confidence
-            if isinstance(confidence, tuple):
-                confidence = confidence[0] if confidence else 0.0
-        else:
-            faq_match, confidence = None, 0.0
+            if isinstance(faq_match_confidence, tuple):
+                faq_match, confidence = faq_match_confidence
+                if isinstance(confidence, tuple):
+                    confidence = confidence[0] if confidence else 0.0
 
         if faq_match and isinstance(confidence, float) and confidence > 0.7:
-            response = faq_match
-            self.conversation_history.append({"role": "assistant", "content": response})
-            return response
+            # Evitar devolver la misma respuesta que acabamos de dar
+            if faq_match != self.last_response:
+                response = faq_match
+                self.conversation_history.append({"role": "assistant", "content": response})
+                self.last_response = response
+                return response
 
         simple_responses = {
             "es": {
-                "hola": "¡Klk! ¿En qué puedo ayudarte hoy con Tix.do?",
+                "hola": "¡Hola, Gracias por contactarnos!, te asiste Camila. ¿En qué puedo ayudarte hoy con Tix.do?",
                 "gracias": "¡De nada! Estoy aquí para ayudarte con todo lo relacionado a Tix.do.",
-                "adios": "¡Chao! Gracias por usar Tix-o-bot. ¡Que disfrutes tus eventos!",
+                "adios": "¡Chao! Gracias por contactarnos. ¡Que disfrutes tus eventos!",
                 "ayuda": "Puedo ayudarte con información sobre eventos, entradas, reembolsos y más. ¿Qué necesitas saber?",
                 "evento": "Tix.do tiene muchos eventos increíbles. ¿Buscas algo específico como conciertos, teatro o deportes?"
             },
             "en": {
                 "hello": "Hi there! How can I help you with Tix.do today?",
                 "thanks": "You're welcome! I'm here to help with all things Tix.do.",
-                "bye": "Goodbye! Thanks for using Tix-o-bot. Enjoy your events!",
+                "bye": "Goodbye! Thanks for contacting us. Enjoy your events!",
                 "help": "I can help you with information about events, tickets, refunds and more. What do you need to know?",
                 "event": "Tix.do has many amazing events. Are you looking for something specific like concerts, theater, or sports?"
             }
@@ -123,8 +149,11 @@ class TixOBot:
         message_lower = user_message.lower()
         for keyword, response in simple_responses.get(lang, simple_responses["es"]).items():
             if keyword in message_lower:
-                self.conversation_history.append({"role": "assistant", "content": response})
-                return response
+                # No repetir la misma respuesta que acabamos de dar
+                if response != self.last_response:
+                    self.conversation_history.append({"role": "assistant", "content": response})
+                    self.last_response = response
+                    return response
 
         if OPENAI_API_KEY and len(OPENAI_API_KEY) > 10:
             try:
@@ -140,8 +169,12 @@ class TixOBot:
                     temperature=TEMPERATURE,
                 )
                 bot_response = response.choices[0].message["content"].strip()
-                self.conversation_history.append({"role": "assistant", "content": bot_response})
-                return bot_response
+                
+                # Verificar que no estamos devolviendo la misma respuesta que antes
+                if bot_response != self.last_response:
+                    self.conversation_history.append({"role": "assistant", "content": bot_response})
+                    self.last_response = bot_response
+                    return bot_response
 
             except Exception as e:
                 print(f"Error al generar respuesta con OpenAI: {str(e)}")
@@ -149,5 +182,10 @@ class TixOBot:
         generic_responses = FALLBACK_MESSAGES.get(lang, FALLBACK_MESSAGES["es"])
         selected_response = generic_responses[len(user_message) % len(generic_responses)]
 
+        # Asegurarse de no repetir la última respuesta
+        if selected_response == self.last_response and len(generic_responses) > 1:
+            selected_response = generic_responses[(len(user_message) + 1) % len(generic_responses)]
+
         self.conversation_history.append({"role": "assistant", "content": selected_response})
+        self.last_response = selected_response
         return selected_response

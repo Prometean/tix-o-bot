@@ -8,11 +8,11 @@ FAQS = [
     # Saludos y conversación básica
     (
         "Hola",
-        "¡Klk! ¿Qué tal? Soy Tix-o-bot, tu asistente virtual de Tix.do. ¿En qué puedo ayudarte hoy?"
+        "¡Hola, Gracias por contactarnos!, te asiste Camila. ¿En qué puedo ayudarte hoy?"
     ),
     (
         "Hello",
-        "Hello there! I'm Tix-o-bot, your virtual assistant from Tix.do. How can I help you today?"
+        "Hi, thank you for contacting us! This is Camila assisting you. How can I help you today?"
     ),
     (
         "Gracias",
@@ -31,95 +31,68 @@ FAQS = [
         "What is Tix.do?",
         "Tix.do is the leading ticket sales and event management platform in the Dominican Republic. We facilitate the purchase of tickets for concerts, plays, sporting events, and more."
     ),
-    
     # Preguntas sobre compra de boletos
     (
         "¿Cómo compro entradas?",
-        "Para comprar entradas en Tix.do: 1) Crea una cuenta o inicia sesión, 2) Selecciona el evento que te interesa, 3) Escoge la cantidad y tipo de boletos, 4) Completa el pago con tarjeta de crédito, transferencia o pago móvil. ¡Listo! Recibirás tus boletos por correo electrónico."
+        "Para comprar entradas en Tix.do: 1) Selecciona el evento que te interesa, 2) Escoge la cantidad y tipo de boletos, 3) Completa el pago con tarjeta de crédito. ¡Listo! Recibirás tus boletos por correo electrónico."
     ),
     (
         "How do I buy tickets?",
-        "To buy tickets on Tix.do: 1) Create an account or log in, 2) Select the event you're interested in, 3) Choose the quantity and type of tickets, 4) Complete payment by credit card, bank transfer, or mobile payment. Done! You'll receive your tickets by email."
+        "To buy tickets on Tix.do: 1) Select the event you're interested in, 2) Choose the quantity and type of tickets, 3) Complete payment by credit card. Done! You'll receive your tickets by email."
     ),
-    
     # Preguntas sobre medios de pago
     (
         "¿Qué métodos de pago aceptan?",
-        "En Tix.do aceptamos múltiples formas de pago: tarjetas de crédito/débito (Visa, Mastercard, American Express), transferencias bancarias, pago móvil (tPago), y en algunos casos efectivo en puntos autorizados."
+        "En Tix.do aceptamos múltiples formas de pago: tarjetas de crédito/débito (Visa y Mastercard) y transferencias bancarias."
     ),
     (
         "What payment methods do you accept?",
-        "At Tix.do we accept multiple payment methods: credit/debit cards (Visa, Mastercard, American Express), bank transfers, mobile payment (tPago), and in some cases cash at authorized points."
+        "At Tix.do we accept multiple payment methods: credit/debit cards (Visa and Mastercard) and bank transfers."
     ),
-    
     # Preguntas sobre reembolsos
     (
         "¿Puedo solicitar un reembolso?",
-        "La política de reembolso depende de cada organizador. En general, los boletos no son reembolsables, pero en caso de cancelación del evento por parte del organizador, se garantiza el reembolso completo. Contacta a soporte@tix.do para casos específicos."
+        "La política de reembolso depende de cada organizador. En general, los boletos no son reembolsables, pero en caso de cancelación del evento por parte del organizador, se garantiza el reembolso. Recuerda que el cargo por servicio no es reembolsable. Contacta a info@tix.do para casos específicos."
     ),
     (
         "Can I request a refund?",
-        "The refund policy depends on each organizer. In general, tickets are non-refundable, but in case of cancellation of the event by the organizer, a full refund is guaranteed. Contact support@tix.do for specific cases."
+        "The refund policy depends on each organizer. In general, tickets are non-refundable, but in case of cancellation of the event by the organizer, a refund is guaranteed. Contact info@tix.do for specific cases."
     ),
-    
     # Preguntas sobre entradas perdidas
     (
         "Perdí mis entradas, ¿qué hago?",
-        "¡No te preocupes! Puedes recuperar tus entradas iniciando sesión en tu cuenta de Tix.do y accediendo a la sección 'Mis Boletos'. Desde allí podrás descargar o reenviar tus entradas a tu correo. Si necesitas asistencia adicional, escribe a soporte@tix.do."
+        "¡No te preocupes! Por favor confírmanos tu correo electrónico y el nombre del evento para poder reenviar tus entradas lo antes posible."
     ),
     (
         "I lost my tickets, what should I do?",
-        "Don't worry! You can recover your tickets by logging into your Tix.do account and accessing the 'My Tickets' section. From there you can download or resend your tickets to your email. If you need additional assistance, write to support@tix.do."
+        "No worries! Please confirm your email address and the name of the event so we can resend your tickets as soon as possible."
     ),
-    
     # Preguntas sobre reventa
     (
         "¿Puedo revender mis entradas?",
-        "La reventa no oficial de boletos está prohibida en Tix.do. Sin embargo, para algunos eventos ofrecemos la función de transferencia segura de boletos, que te permite transferir legalmente tus entradas a otra persona a través de nuestra plataforma."
+        "La reventa no oficial de boletos está prohibida en Tix.do."
     ),
     (
         "Can I resell my tickets?",
-        "Unofficial ticket resale is prohibited on Tix.do. However, for some events we offer the secure ticket transfer function, which allows you to legally transfer your tickets to another person through our platform."
+        "Unofficial ticket resale is prohibited on Tix.do."
     ),
-    
     # Preguntas sobre contacto
     (
         "¿Cómo puedo contactar a servicio al cliente?",
-        "Puedes contactar a nuestro equipo de servicio al cliente a través de: Email: soporte@tix.do, Teléfono: +1 (809) 555-TIXS (8497), WhatsApp: +1 (829) 555-TIXS (8497), o en nuestras redes sociales @TixDO."
+        "Puedes contactar a nuestro equipo de servicio al cliente a través de: Email: info@tix.do, WhatsApp: +1 (809)330-3797, o en instagram @Tix.do."
     ),
     (
         "How can I contact customer service?",
-        "You can contact our customer service team through: Email: support@tix.do, Phone: +1 (809) 555-TIXS (8497), WhatsApp: +1 (829) 555-TIXS (8497), or on our social networks @TixDO."
+        "You can contact our customer service team through: Email: info@tix.do, WhatsApp: +1 (809) 330-3797, or on instagram @Tix.do."
     ),
-    
     # Preguntas sobre el bot
     (
         "¿Quién eres tú?",
-        "¡Klk! Soy Tix-o-bot, el asistente virtual de Tix.do. Estoy aquí para ayudarte con preguntas sobre eventos, entradas y más. Si necesitas hablar con un humano, solo dímelo y te conectaré con un agente de servicio al cliente."
+        "¡Hola! Soy Camila, la asistente virtual de Tix.do. Estoy aquí para ayudarte con preguntas sobre eventos, entradas y más. Si necesitas hablar con un humano, solo dímelo y te conectaré con un agente de servicio al cliente."
     ),
     (
         "Who are you?",
-        "Hello! I'm Tix-o-bot, the virtual assistant for Tix.do. I'm here to help you with questions about events, tickets, and more. If you need to talk to a human, just tell me and I'll connect you with a customer service agent."
-    ),
-    
-    # Preguntas adicionales sobre la plataforma
-    (
-        "¿Cómo me registro en Tix.do?",
-        "Registrarse en Tix.do es muy fácil: 1) Ve a www.tix.do y haz clic en 'Crear cuenta', 2) Completa el formulario con tu información personal, 3) Verifica tu correo electrónico, y 4) ¡Listo! Ya puedes empezar a comprar boletos para tus eventos favoritos."
-    ),
-    (
-        "How do I register on Tix.do?",
-        "Registering on Tix.do is very easy: 1) Go to www.tix.do and click on 'Create account', 2) Fill out the form with your personal information, 3) Verify your email, and 4) Done! You can now start buying tickets for your favorite events."
-    ),
-    
-    # Preguntas sobre seguridad
-    (
-        "¿Es seguro comprar en Tix.do?",
-        "¡Absolutamente! Tix.do utiliza tecnología de encriptación SSL para proteger tus datos personales y financieros. Además, somos la plataforma oficial de venta de boletos para cientos de eventos en República Dominicana, garantizando la autenticidad de cada entrada vendida."
-    ),
-    (
-        "Is it safe to buy on Tix.do?",
-        "Absolutely! Tix.do uses SSL encryption technology to protect your personal and financial data. Additionally, we are the official ticket selling platform for hundreds of events in the Dominican Republic, guaranteeing the authenticity of each ticket sold."
+        "Hello! I'm Camila, the virtual assistant for Tix.do. I'm here to help you with questions about events, tickets, and more. If you need to talk to a human, just tell me and I'll connect you with a customer service agent."
     )
 ]
 
