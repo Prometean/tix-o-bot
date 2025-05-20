@@ -4,44 +4,42 @@ from dotenv import load_dotenv
 # Cargar variables de entorno
 load_dotenv()
 
-# Configuración de la API de OpenAI
+# Configuracion de la API de OpenAI
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 
-# Verificar si la clave de API está configurada
+# Verificar si la clave de API esta configurada
 if not OPENAI_API_KEY or OPENAI_API_KEY == "":
-    print("⚠️  ADVERTENCIA: No se ha configurado OPENAI_API_KEY. El bot funcionará en modo limitado.")
+    print("⚠️  ADVERTENCIA: No se ha configurado OPENAI_API_KEY. El bot funcionara en modo limitado.")
     print("Por favor, crea un archivo .env con tu clave de API de OpenAI.")
     print("Ejemplo: OPENAI_API_KEY=sk-tu-clave-aqui")
 
-# Configuración del bot
-BOT_NAME = "Tix-o-bot"
+# Configuracion del bot
+BOT_NAME = "Camile"
 DEFAULT_LANGUAGE = "es"  # es o en
 
-# Personalidad del bot
+# Personalidad del bot actualizada
 BOT_PERSONA = {
     "es": """
-        Eres Tix-o-bot, el asistente virtual de Tix.do, la plataforma líder de eventos en República Dominicana.
-        Tu tono es casual y amigable, utilizando español dominicano cuando sea apropiado.
-        Usas expresiones como "¡Klk!", "¡Dale!", "¡Wepa!" de forma natural y moderada.
-        Tu objetivo es ayudar a los usuarios con sus preguntas sobre eventos, entradas y la plataforma Tix.do.
+        Eres Camile, una asistente virtual femenina, amigable, profesional y casual que atiende clientes de Tix.do, 
+        la plataforma lider de eventos en Republica Dominicana. 
+        Siempre respondes en español neutro, con claridad, amabilidad y evitando completamente el uso de jerga dominicana. 
         Si no puedes responder una pregunta, ofreces contactar a un agente humano.
     """,
     "en": """
-        You are Tix-o-bot, the virtual assistant for Tix.do, the leading event platform in the Dominican Republic.
-        Your tone is casual and friendly.
-        Your goal is to help users with their questions about events, tickets, and the Tix.do platform.
-        If you can't answer a question, you offer to contact a human agent.
+        You are Camile, a friendly, professional, feminine-toned virtual assistant serving customers for Tix.do, 
+        the leading events platform in the Dominican Republic. You always respond clearly, politely, and professionally in English, 
+        without using slang. If you can't answer a question, you offer to connect with a human agent.
     """
 }
 
-# Mensajes predeterminados
+# Mensajes predeterminados actualizados
 WELCOME_MESSAGES = {
-    "es": "¡Klk! 👋 Soy Tix-o-bot, tu asistente virtual de Tix.do. ¿En qué puedo ayudarte hoy? Pregúntame sobre eventos, entradas o cualquier duda que tengas.",
-    "en": "Hello there! 👋 I'm Tix-o-bot, your virtual assistant from Tix.do. How can I help you today? Ask me about events, tickets, or any questions you might have."
+    "es": "Hola 👋, soy Camile, tu asistente virtual de Tix.do. ¿En que puedo ayudarte hoy? Puedes consultarme sobre eventos, entradas o cualquier otra duda.",
+    "en": "Hello there! 👋 I'm Camile, your virtual assistant from Tix.do. How can I help you today? You can ask me about events, tickets, or any other questions."
 }
 
 FALLBACK_MESSAGES = {
-    "es": "Lo siento, no tengo esa información en este momento. ¿Te gustaría que te conecte con un agente humano?",
+    "es": "Lo siento, no tengo esa informacion en este momento. ¿Te gustaria que te conecte con un agente humano?",
     "en": "I'm sorry, I don't have that information at the moment. Would you like me to connect you with a human agent?"
 }
 
@@ -50,7 +48,7 @@ HUMAN_HANDOFF_MESSAGES = {
     "en": "I understand you need additional help. I'll connect you with a human agent. Please wait a moment."
 }
 
-# Configuración del modelo de OpenAI
+# Configuracion del modelo de OpenAI
 GPT_MODEL = "gpt-3.5-turbo"
 MAX_TOKENS = 150
 TEMPERATURE = 0.7

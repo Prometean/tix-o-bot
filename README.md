@@ -4,7 +4,7 @@ Asistente virtual inteligente para la plataforma de eventos [Tix.do](https://tix
 
 ## Objetivo
 
-Automatizar la atención al cliente de Tix.do a través de un agente conversacional multicanal, con lenguaje natural adaptado al público joven dominicano. El bot responderá consultas frecuentes sobre eventos, pagos, reembolsos y más, con un tono casual y en el idioma del usuario.
+Automatizar la atención al cliente de Tix.do a través de un agente conversacional multicanal, con lenguaje natural adaptado al público joven dominicano. El bot responde consultas frecuentes sobre eventos, pagos, reembolsos y más, con un tono casual y profesional.
 
 ---
 
@@ -16,21 +16,21 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 ## Fases del Proyecto
 
-1. **Branding del bot y configuración base**
-2. **Entrenamiento con FAQs y ajustes conversacionales**
-3. **Desarrollo de interfaz e integración web**
+1. **Branding del bot y configuración base** ✅
+2. **Entrenamiento con FAQs y ajustes conversacionales** ✅
+3. **Desarrollo de interfaz e integración web** *(en curso)*
 4. **Pruebas funcionales y ajustes**
 5. **Entrega final y soporte post-implementación**
 
 ---
 
-## Funcionalidades Principales (fase actual)
+## Funcionalidades Principales
 
-* Procesamiento de preguntas frecuentes
-* Respuestas en tono casual, en español dominicano o inglés
-* Soporte 24/7 automatizado
-* Escalamiento simulado a humano
-* Widget embebible en sitio web
+* Procesamiento de preguntas frecuentes (FAQs)
+* Respuestas naturales en español o inglés, tono casual y profesional
+* Soporte automatizado 24/7
+* Escalamiento simulado a agente humano
+* Interfaz embebible en sitio web
 
 ---
 
@@ -40,17 +40,16 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 * Validación de códigos de ticket
 * Reenvío automatizado de entradas
 * Automatización de correos personalizados
-* Soporte multicanal (WS, Instagram, correo)
+* Soporte multicanal (WhatsApp, Instagram, correo)
 * Análisis de sentimiento
-* Reportes automáticos de conversaciones
-* Entrenamiento por canal o audiencia
+* Reportes automáticos
+* Entrenamiento personalizado por canal o audiencia
 
 ---
 
 ## Estado Actual
 
-* Fase actual: **Entrenamiento con FAQs y Ajustes Conversacionales
-Objetivo**
+* Fase actual: **Desarrollo de interfaz e integración web**
 * Entorno de desarrollo: **GitHub / Streamlit Cloud**
 * Fecha de inicio: Mayo-09-2025
 
@@ -61,7 +60,8 @@ Objetivo**
 * Python
 * Streamlit (versión gratuita temporal)
 * OpenAI GPT-3.5 (API comercial)
-* Replit / GitHub (para prototipado)
+* GitHub (código fuente y control de versiones)
+* Replit (opcional para prototipado rápido)
 
 ---
 
@@ -69,10 +69,26 @@ Objetivo**
 
 ```
 📁 tix-o-bot/
-├── main.py              # Script principal de Streamlit para el asistente
-├── requirements.txt     # Lista de dependencias del proyecto
-├── README.md            # Documentación del proyecto
-└── .gitignore           # Exclusiones de control de versiones
+├── .streamlit/              # Configuración de Streamlit
+│   └── config.toml
+├── bot/                     # Lógica del asistente
+│   ├── __init__.py
+│   ├── assistant.py         # Clase principal del bot Camile
+│   └── knowledge_base.py    # Base de preguntas frecuentes
+├── utils/                   # Funciones auxiliares
+│   ├── __init__.py
+│   └── helpers.py
+├── venv/                    # Entorno virtual (excluido del repo)
+├── .env                     # Variables de entorno locales
+├── .env copy.example        # Plantilla de configuración de entorno
+├── .gitignore
+├── config.py                # Configuraciones globales del bot
+├── main.py                  # Entrada principal (Streamlit UI)
+├── main_simple.py           # Versión simple del bot (modo demo)
+├── test_bot.py              # Script de prueba en consola
+├── requirements.txt         # Dependencias del proyecto
+├── requirements-alt.txt     # Alternativa para entornos distintos
+└── README.md                # Este documento
 ```
 
 ---
@@ -90,13 +106,32 @@ Contacto: [ean.jimenez97@gmail.com](mailto:ean.jimenez97@gmail.com)
 
 ---
 
-## Archivos base
+## Archivos Clave
 
 ### main.py
+
+Interfaz en Streamlit que conecta con el bot y permite chatear en tiempo real.
+
+### test\_bot.py
+
+Script para validar respuestas del bot desde consola.
+
+### config.py
+
+Define idioma, nombre del bot, API Key de OpenAI, mensajes predefinidos y personalidad.
 
 ### requirements.txt
 
 ```
 streamlit
 openai
+tenacity
+python-dotenv
+```
+
+### .env copy.example
+
+```bash
+OPENAI_API_KEY=sk-...
+DEFAULT_LANGUAGE=es
 ```

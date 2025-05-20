@@ -8,21 +8,108 @@ FAQS = [
     # Saludos y conversación básica
     (
         "Hola",
-        "¡Hola, Gracias por contactarnos!, te asiste Camila. ¿En qué puedo ayudarte hoy?"
+        "¡Hola! ✨\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
+    ),
+    (
+        "Buenas",
+        "¡Hola! ✨\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
     ),
     (
         "Hello",
-        "Hi, thank you for contacting us! This is Camila assisting you. How can I help you today?"
+        "Hi! ✨\n\nThank you for contacting us!\n\nHow can I help you today?"
     ),
     (
         "Gracias",
-        "¡De nada! Siempre es un placer ayudarte. Si tienes más preguntas, estoy aquí para ti."
+        "¡De nada! Siempre es un placer ayudarte. Si tienes más preguntas, estoy aquí para ti. Feliz día 🖤"
     ),
     (
         "Thank you",
-        "You're welcome! It's always a pleasure to help. If you have more questions, I'm here for you."
+        "You're welcome! It's always a pleasure to help. If you have more questions, I'm here for you. Have a nice day 🖤"
     ),
-    # Preguntas generales sobre Tix.do
+    
+    # Compra de boletos/entradas
+    (
+        "¿Cómo compro entradas?",
+        "Para comprar entradas en Tix.do debes acceder al link del evento que te interesa, seleccionar la cantidad y tipo de boletos, y completar el pago. Recibirás tus boletos por correo electrónico con un código QR."
+    ),
+    (
+        "Quiero comprar boletas",
+        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Puedo compartirte el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets.\n\nPor favor, indícame el nombre del evento que te interesa.\n\nFeliz día 🖤"
+    ),
+    (
+        "Me interesan unas entradas",
+        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Por favor, indícame el nombre del evento para el que deseas adquirir entradas y te compartiré el link de compra.\n\nFeliz día 🖤"
+    ),
+    (
+        "¿Cómo puedo adquirir boletas?",
+        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Te puedo proporcionar el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets. Solo necesito que me indiques el evento que te interesa.\n\nFeliz día 🖤"
+    ),
+    (
+        "How do I buy tickets?",
+        "Hi! ✨\n\nThank you for contacting us. I can share the link to the event so you can see the prices and purchase your tickets. Please let me know which event you're interested in.\n\nHave a nice day 🖤"
+    ),
+    
+    # Información sobre eventos específicos
+    (
+        "Quedan entradas disponibles",
+        "Para verificar la disponibilidad de entradas de este evento, por favor comunícate directamente con la producción. Puedes hacerlo a través del link del evento que te puedo proporcionar si me indicas cuál es el evento de tu interés."
+    ),
+    (
+        "Quedan mesas disponibles",
+        "Para información sobre disponibilidad de mesas, debes comunicarte directamente con la producción del evento. Puedes hacerlo a través del link del evento que te puedo proporcionar."
+    ),
+    
+    # Publicación de eventos (para organizadores)
+    (
+        "¿Cómo publicar un evento?",
+        "Para subir tu evento con nosotros solo debes crear tu perfil y llenar tus datos en nuestra página https://vendors.tix.do/register\n\nLuego de haber creado tu perfil podrás visualizar en tu cuenta la opción de crear evento, donde debes colocar todos los campos requeridos con la información.\n\nLa imagen debe ser 1,080 x 1,080 px exactos y no pesar más de 1.5 Mb. Tu evento tendrá un periodo de revisión de 15 a 30 min en la plataforma."
+    ),
+    (
+        "¿Cuáles son los costos para publicar un evento?",
+        "La publicación del evento es totalmente gratuita. El organizador solo paga el fee del procesamiento de transacción de un 4.9% + RD$25 por boleta vendida.\n\nEl participante del evento (Comprador) paga un cargo por servicio de un 8.5% + RD$15 de cada boleta adquirida."
+    ),
+    (
+        "¿Qué información solicitan al comprador?",
+        "En nuestra base de datos recopilamos el correo electrónico del comprador. Esta es la información de contacto principal que se utiliza para enviar los códigos QR de las entradas adquiridas."
+    ),
+    (
+        "¿Qué información recibe el cliente tras comprar?",
+        "El participante recibe un correo electrónico con su código QR, que servirá como entrada digital para el evento."
+    ),
+    (
+        "¿Ofrecen servicios adicionales para eventos?",
+        "Sí, ofrecemos servicio de staff para el escaneo de códigos QR generados en la compra, creando una logística de entrada eficiente. También contamos con servicio de alquiler de verifones para venta de puerta y bares. Puedo ponerte en contacto con nuestro equipo especializado para más detalles."
+    ),
+    
+    # Reembolsos y cancelaciones
+    (
+        "¿Cómo solicito un reembolso?",
+        "Para solicitar un reembolso, por favor envía todos los datos relacionados a tu orden (nombre, correo, número de orden) al correo electrónico info@tix.do."
+    ),
+    (
+        "Compré un seguro, ¿cómo pido reembolso?",
+        "Para el reembolso de una orden asegurada debes enviarnos una constancia de la razón vía correo electrónico a info@tix.do.\n\nLa misma debe estar contemplada dentro de nuestros términos y condiciones: https://tix.do/asegura-tu-compra\n\nEl proceso de reembolso tarda de 10-15 días hábiles (sujeto a tiempos bancarios) y solo se realizará al método de pago original de la compra.\n\nLos cargos por servicios no son reembolsables en ningún caso."
+    ),
+    (
+        "Quiero una devolución",
+        "Para solicitar una devolución, por favor envía al correo electrónico info@tix.do todos los datos relacionados a tu orden, como el nombre, el correo y el número de orden. Nuestro equipo revisará tu solicitud según nuestras políticas de devolución."
+    ),
+    (
+        "No puedo asistir al evento",
+        "Lamentamos que no puedas asistir. Si adquiriste el seguro de compra, puedes solicitar un reembolso enviando una constancia de la razón a info@tix.do. Si no adquiriste seguro, lamentablemente los boletos no son reembolsables según nuestros términos y condiciones."
+    ),
+    
+    # Datos de contacto 
+    (
+        "¿Cómo contactarlos?",
+        "Puedes contactarnos a través de nuestro correo electrónico info@tix.do o por este mismo canal de WhatsApp. Estamos disponibles para asistirte en lo que necesites."
+    ),
+    (
+        "¿Cuál es su correo electrónico?",
+        "Nuestro correo electrónico de contacto es info@tix.do"
+    ),
+    
+    # Preguntas sobre Tix.do
     (
         "¿Qué es Tix.do?",
         "Tix.do es la plataforma líder de venta de entradas y gestión de eventos en República Dominicana. Facilitamos la compra de boletos para conciertos, obras de teatro, eventos deportivos y más."
@@ -31,16 +118,8 @@ FAQS = [
         "What is Tix.do?",
         "Tix.do is the leading ticket sales and event management platform in the Dominican Republic. We facilitate the purchase of tickets for concerts, plays, sporting events, and more."
     ),
-    # Preguntas sobre compra de boletos
-    (
-        "¿Cómo compro entradas?",
-        "Para comprar entradas en Tix.do: 1) Selecciona el evento que te interesa, 2) Escoge la cantidad y tipo de boletos, 3) Completa el pago con tarjeta de crédito. ¡Listo! Recibirás tus boletos por correo electrónico."
-    ),
-    (
-        "How do I buy tickets?",
-        "To buy tickets on Tix.do: 1) Select the event you're interested in, 2) Choose the quantity and type of tickets, 3) Complete payment by credit card. Done! You'll receive your tickets by email."
-    ),
-    # Preguntas sobre medios de pago
+    
+    # Métodos de pago
     (
         "¿Qué métodos de pago aceptan?",
         "En Tix.do aceptamos múltiples formas de pago: tarjetas de crédito/débito (Visa y Mastercard) y transferencias bancarias."
@@ -49,50 +128,25 @@ FAQS = [
         "What payment methods do you accept?",
         "At Tix.do we accept multiple payment methods: credit/debit cards (Visa and Mastercard) and bank transfers."
     ),
-    # Preguntas sobre reembolsos
+    
+    # Boletos perdidos
     (
-        "¿Puedo solicitar un reembolso?",
-        "La política de reembolso depende de cada organizador. En general, los boletos no son reembolsables, pero en caso de cancelación del evento por parte del organizador, se garantiza el reembolso. Recuerda que el cargo por servicio no es reembolsable. Contacta a info@tix.do para casos específicos."
+        "Perdí mis entradas",
+        "¡No te preocupes! Por favor confirma tu correo electrónico y el nombre del evento para poder reenviar tus entradas lo antes posible."
     ),
     (
-        "Can I request a refund?",
-        "The refund policy depends on each organizer. In general, tickets are non-refundable, but in case of cancellation of the event by the organizer, a refund is guaranteed. Contact info@tix.do for specific cases."
+        "No me llegó el correo con las entradas",
+        "Lamento que no hayas recibido tus entradas. Por favor, comparte conmigo tu nombre completo, correo electrónico y el número de orden para poder verificar el estado de tu compra y reenviar las entradas si es necesario."
     ),
-    # Preguntas sobre entradas perdidas
-    (
-        "Perdí mis entradas, ¿qué hago?",
-        "¡No te preocupes! Por favor confírmanos tu correo electrónico y el nombre del evento para poder reenviar tus entradas lo antes posible."
-    ),
-    (
-        "I lost my tickets, what should I do?",
-        "No worries! Please confirm your email address and the name of the event so we can resend your tickets as soon as possible."
-    ),
-    # Preguntas sobre reventa
-    (
-        "¿Puedo revender mis entradas?",
-        "La reventa no oficial de boletos está prohibida en Tix.do."
-    ),
-    (
-        "Can I resell my tickets?",
-        "Unofficial ticket resale is prohibited on Tix.do."
-    ),
-    # Preguntas sobre contacto
-    (
-        "¿Cómo puedo contactar a servicio al cliente?",
-        "Puedes contactar a nuestro equipo de servicio al cliente a través de: Email: info@tix.do, WhatsApp: +1 (809)330-3797, o en instagram @Tix.do."
-    ),
-    (
-        "How can I contact customer service?",
-        "You can contact our customer service team through: Email: info@tix.do, WhatsApp: +1 (809) 330-3797, or on instagram @Tix.do."
-    ),
+    
     # Preguntas sobre el bot
     (
         "¿Quién eres tú?",
-        "¡Hola! Soy Camila, la asistente virtual de Tix.do. Estoy aquí para ayudarte con preguntas sobre eventos, entradas y más. Si necesitas hablar con un humano, solo dímelo y te conectaré con un agente de servicio al cliente."
+        "¡Hola! Soy Camile, la asistente virtual de Tix.do. Estoy aquí para ayudarte con preguntas sobre eventos, entradas y más. Si necesitas hablar con un agente humano, solo dímelo y te conectaré con nuestro equipo de servicio al cliente."
     ),
     (
         "Who are you?",
-        "Hello! I'm Camila, the virtual assistant for Tix.do. I'm here to help you with questions about events, tickets, and more. If you need to talk to a human, just tell me and I'll connect you with a customer service agent."
+        "Hello! I'm Camile, the virtual assistant for Tix.do. I'm here to help you with questions about events, tickets, and more. If you need to talk to a human agent, just let me know and I'll connect you with our customer service team."
     )
 ]
 
@@ -170,7 +224,7 @@ def find_best_faq_match(user_query: str, language: str = "es") -> Tuple[Optional
     
     for question, answer in FAQS:
         # Determinar si la pregunta está en español
-        is_spanish_question = "¿" in question or question in ["Hola", "Gracias"]
+        is_spanish_question = "¿" in question or any(word in question.lower() for word in ["hola", "gracias", "como", "qué", "cómo", "buenas"])
         
         # Filtrar preguntas por idioma
         if (actual_lang == "es" and not is_spanish_question) or (actual_lang == "en" and is_spanish_question):
@@ -189,6 +243,6 @@ def find_best_faq_match(user_query: str, language: str = "es") -> Tuple[Optional
             best_match = answer
     
     # Ajustar el umbral de confianza para ser más permisivo
-    confidence_threshold = 0.5  # Bajamos el umbral para ser más flexibles
+    confidence_threshold = 0.5  # Umbral para considerar una respuesta válida
     
     return best_match, best_score if best_score >= confidence_threshold else (None, 0.0)

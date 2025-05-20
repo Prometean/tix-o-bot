@@ -1,9 +1,9 @@
-
 import openai
 import os
 import json
 from typing import Dict, List, Tuple, Optional
 from bot.knowledge_base import FAQS, find_best_faq_match
+from utils.helpers import send_handoff_email, format_time  # Importamos la nueva función
 from config import (
     GPT_MODEL, 
     MAX_TOKENS, 
@@ -20,7 +20,7 @@ openai.api_key = OPENAI_API_KEY
 class TixOBot:
     """Clase principal del asistente Tix-o-bot."""
     
-    def __init__(self, name: str, persona: Dict[str, str], default_language: str = "es"):
+    def __init__(self, name: str, persona: Dict[str, str], default_language: str = "es", user_id: str = "Anónimo"):
         """
         Inicializa el asistente virtual.
         
@@ -28,12 +28,14 @@ class TixOBot:
             name: Nombre del asistente
             persona: Descripción de la personalidad en diferentes idiomas
             default_language: Idioma predeterminado ("es" o "en")
+            user_id: Identificador único del usuario (si está disponible)
         """
         self.name = name
         self.persona = persona
         self.default_language = default_language
         self.conversation_history: List[Dict[str, str]] = []
         self.last_response = ""  # Almacenar la última respuesta para evitar duplicados
+        self.user_id = user_id
         
     def get_welcome_message(self, language: Optional[str] = None) -> str:
         """
@@ -98,9 +100,32 @@ class TixOBot:
         self.conversation_history.append({"role": "user", "content": user_message})
         
         if self._check_for_human_handoff_request(user_message, lang):
+            # Agregar el mensaje de respuesta para el usuario
             response = HUMAN_HANDOFF_MESSAGES.get(lang, HUMAN_HANDOFF_MESSAGES["es"])
             self.conversation_history.append({"role": "assistant", "content": response})
             self.last_response = response
+            
+            # Enviar correo de notificación al soporte
+            try:
+                success, message = send_handoff_email(
+                    user_message=user_message,
+                    language=lang,
+                    conversation_history=self.conversation_history,
+                    user_id=self.user_id
+                )
+                
+                if success:
+                    print(f"✅ {message}")
+                else:
+                    print(f"⚠️ {message}")
+                    
+                # Registrar el intento de notificación en el historial interno (no visible para el usuario)
+                notification_status = f"[Sistema: Notificación de handoff {'enviada' if success else 'fallida'} - {format_time()}]"
+                self.conversation_history.append({"role": "system", "content": notification_status})
+                
+            except Exception as e:
+                print(f"❌ Error inesperado al procesar la solicitud de handoff: {str(e)}")
+                
             return response
 
         # Evitar buscar coincidencias de FAQ si el mensaje es demasiado similar a la última respuesta del bot
