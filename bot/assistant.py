@@ -1,4 +1,4 @@
-import openai
+from openai import OpenAI
 from typing import Dict, List, Optional
 from bot.knowledge_base import find_best_faq_match
 from utils.helpers import send_handoff_email, format_time
@@ -12,7 +12,8 @@ from config import (
     OPENAI_API_KEY
 )
 
-openai.api_key = OPENAI_API_KEY
+# Initialize OpenAI client
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 class TixOBot:
     """Clase principal del asistente Tix-o-bot."""
@@ -97,12 +98,7 @@ class TixOBot:
         self.conversation_history.append({"role": "user", "content": user_message})
         
         if self._check_for_human_handoff_request(user_message, lang):
-            # Agregar el mensaje de respuesta para el usuario
-            response = HUMAN_HANDOFF_MESSAGES.get(lang, HUMAN_HANDOFF_MESSAGES["es"])
-            self.conversation_history.append({"role": "assistant", "content": response})
-            self.last_response = response
-            
-            # Enviar correo de notificación al soporte
+            # Enviar correo de notificación al soporte PRIMERO
             try:
                 success, message = send_handoff_email(
                     user_message=user_message,
@@ -111,17 +107,34 @@ class TixOBot:
                     user_id=self.user_id
                 )
                 
+                # Decidir la respuesta basándose en si el email fue exitoso
                 if success:
                     print(f"✅ {message}")
+                    response = HUMAN_HANDOFF_MESSAGES.get(lang, HUMAN_HANDOFF_MESSAGES["es"])
+                    # Registrar el éxito en el historial interno
+                    notification_status = f"[Sistema: Notificación de handoff enviada - {format_time()}]"
                 else:
                     print(f"⚠️ {message}")
+                    if "EMAIL_PASS" in message:
+                        # Email not configured - provide alternative response
+                        response = "Lo siento, el sistema de transferencia a agentes humanos no está disponible en este momento. Por favor, contacta directamente a soporte en info@tix.do"
+                    else:
+                        # Other email error
+                        response = "Hubo un problema al procesar tu solicitud. Por favor, intenta nuevamente o contacta a soporte directamente en info@tix.do"
                     
-                # Registrar el intento de notificación en el historial interno (no visible para el usuario)
-                notification_status = f"[Sistema: Notificación de handoff {'enviada' if success else 'fallida'} - {format_time()}]"
-                self.conversation_history.append({"role": "system", "content": notification_status})
+                    # Registrar el fallo en el historial interno
+                    notification_status = f"[Sistema: Notificación de handoff fallida - {format_time()}]"
                 
+                # Ahora agregar la respuesta final al historial
+                self.conversation_history.append({"role": "assistant", "content": response})
+                self.conversation_history.append({"role": "system", "content": notification_status})
+                self.last_response = response
+                    
             except Exception as e:
                 print(f"❌ Error inesperado al procesar la solicitud de handoff: {str(e)}")
+                response = "Hubo un error inesperado. Por favor, contacta a soporte directamente en info@tix.do"
+                self.conversation_history.append({"role": "assistant", "content": response})
+                self.last_response = response
                 
             return response
 
@@ -177,20 +190,21 @@ class TixOBot:
                     self.last_response = response
                     return response
 
-        if OPENAI_API_KEY and len(OPENAI_API_KEY) > 10:
+        # Try OpenAI API if available
+        if client and OPENAI_API_KEY and len(OPENAI_API_KEY) > 10:
             try:
                 messages = [
                     {"role": "system", "content": self.persona.get(lang, self.persona["es"])}
                 ]
                 messages.extend(self.conversation_history[-5:])
 
-                response = openai.ChatCompletion.create(
+                response = client.chat.completions.create(
                     model=GPT_MODEL,
                     messages=messages,
                     max_tokens=MAX_TOKENS,
                     temperature=TEMPERATURE,
                 )
-                bot_response = response.choices[0].message["content"].strip()
+                bot_response = response.choices[0].message.content.strip()
                 
                 # Verificar que no estamos devolviendo la misma respuesta que antes
                 if bot_response != self.last_response:

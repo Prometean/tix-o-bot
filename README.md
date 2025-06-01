@@ -88,7 +88,6 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 ├── main_simple.py           # Versión simple del bot (modo demo)
 ├── test_bot.py              # Script de prueba en consola
 ├── requirements.txt         # Dependencias del proyecto
-├── requirements-alt.txt     # Alternativa para entornos distintos
 └── README.md                # Este documento
 └── test_bot                 # Script para probar el bot desde consola
 ```

@@ -1,12 +1,10 @@
 import streamlit as st
 import openai
-import os
 from datetime import datetime
 from bot.assistant import TixOBot
 from bot.knowledge_base import FAQS
 from config import OPENAI_API_KEY, BOT_NAME, BOT_PERSONA, DEFAULT_LANGUAGE
 
-# Configuración de la API de OpenAI
 openai.api_key = OPENAI_API_KEY
 
 # Configuración de la página

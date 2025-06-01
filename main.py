@@ -1,15 +1,13 @@
 import streamlit as st
-import openai
-import os
+from openai import OpenAI
 from datetime import datetime
 from bot.assistant import TixOBot
 from bot.knowledge_base import FAQS
 from config import OPENAI_API_KEY, BOT_NAME, BOT_PERSONA, DEFAULT_LANGUAGE
 
-# Configuración de la API de OpenAI
-openai.api_key = OPENAI_API_KEY
+# Initialize OpenAI client
+client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
-# Verificar que la API key esté configurada
 if not OPENAI_API_KEY:
     st.error("⚠️ No se ha configurado la API key de OpenAI. Por favor, configura la variable OPENAI_API_KEY en el archivo .env")
     st.stop()
@@ -34,10 +32,10 @@ if "bot" not in st.session_state:
         default_language=DEFAULT_LANGUAGE
     )
 
-# Estilo personalizado con mejor contraste y visibilidad
+# Estilo personalizado con buen contraste y visibilidad
 st.markdown("""
     <style>
-    /* Estilos generales mejorados para mayor contraste */
+    /* Estilos generales para mayor contraste */
     body {
         color: #000000;
         background-color: #ffffff;
