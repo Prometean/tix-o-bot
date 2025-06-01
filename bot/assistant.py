@@ -1,9 +1,7 @@
 import openai
-import os
-import json
-from typing import Dict, List, Tuple, Optional
-from bot.knowledge_base import FAQS, find_best_faq_match
-from utils.helpers import send_handoff_email, format_time  # Importamos la nueva función
+from typing import Dict, List, Optional
+from bot.knowledge_base import find_best_faq_match
+from utils.helpers import send_handoff_email, format_time
 from config import (
     GPT_MODEL, 
     MAX_TOKENS, 
@@ -14,7 +12,6 @@ from config import (
     OPENAI_API_KEY
 )
 
-# Asegurar que la API key esté configurada
 openai.api_key = OPENAI_API_KEY
 
 class TixOBot:
@@ -156,7 +153,7 @@ class TixOBot:
 
         simple_responses = {
             "es": {
-                "hola": "¡Hola, Gracias por contactarnos!, te asiste Camila. ¿En qué puedo ayudarte hoy con Tix.do?",
+                "hola": "¡Hola, gracias por contactarnos! te asiste Camila. ¿En qué puedo ayudarte hoy con Tix.do?",
                 "gracias": "¡De nada! Estoy aquí para ayudarte con todo lo relacionado a Tix.do.",
                 "adios": "¡Chao! Gracias por contactarnos. ¡Que disfrutes tus eventos!",
                 "ayuda": "Puedo ayudarte con información sobre eventos, entradas, reembolsos y más. ¿Qué necesitas saber?",

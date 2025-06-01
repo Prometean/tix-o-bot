@@ -18,9 +18,11 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 1. **Branding del bot y configuración base** ✅
 2. **Entrenamiento con FAQs y ajustes conversacionales** ✅
-3. **Desarrollo de interfaz e integración web** *(en curso)*
-4. **Pruebas funcionales y ajustes**
-5. **Entrega final y soporte post-implementación**
+3. **Desarrollo de interfaz e integración web** - Desarrollo por parte del equipo de Tix.do
+   - Integración con la plataforma de eventos
+   - Implementación de la interfaz en el sitio web
+4. **Pruebas funcionales y ajustes** ✅
+5. **Entrega final y soporte post-implementación** ✅
 
 ---
 
@@ -49,7 +51,7 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 ## Estado Actual
 
-* Fase actual: **Desarrollo de interfaz e integración web**
+* Fase actual: **Entrega final y soporte post-implementación**
 * Entorno de desarrollo: **GitHub / Streamlit Cloud**
 * Fecha de inicio: Mayo-09-2025
 
@@ -69,8 +71,8 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 ```
 📁 tix-o-bot/
-├── .streamlit/              # Configuración de Streamlit
-│   └── config.toml
+├── .devcontainer/              # Reproducibilidad del entorno de desarrollo
+│   └── devcontainer.json
 ├── bot/                     # Lógica del asistente
 │   ├── __init__.py
 │   ├── assistant.py         # Clase principal del bot Camile
@@ -80,7 +82,6 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 │   └── helpers.py
 ├── venv/                    # Entorno virtual (excluido del repo)
 ├── .env                     # Variables de entorno locales
-├── .env copy.example        # Plantilla de configuración de entorno
 ├── .gitignore
 ├── config.py                # Configuraciones globales del bot
 ├── main.py                  # Entrada principal (Streamlit UI)
@@ -89,6 +90,7 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 ├── requirements.txt         # Dependencias del proyecto
 ├── requirements-alt.txt     # Alternativa para entornos distintos
 └── README.md                # Este documento
+└── test_bot                 # Script para probar el bot desde consola
 ```
 
 ---
@@ -102,7 +104,7 @@ Este proyecto es de uso exclusivo de Tix.do. No se permite su redistribución ni
 ## Contacto
 
 Desarrollado por Ean Jimenez
-Contacto: [ean.jimenez97@gmail.com](mailto:ean.jimenez97@gmail.com)
+Contacto: ean.jimenez97@gmail.com
 
 ---
 

@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict, Optional
+from typing import Tuple, Optional
 import re
 from difflib import SequenceMatcher
 
@@ -8,23 +8,23 @@ FAQS = [
     # Saludos y conversación básica
     (
         "Hola",
-        "¡Hola! ✨\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
+        "¡Hola!\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
     ),
     (
         "Buenas",
-        "¡Hola! ✨\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
+        "¡Hola!\n\n¡Gracias por contactarnos!\n\n¿En qué puedo asistirte hoy?"
     ),
     (
         "Hello",
-        "Hi! ✨\n\nThank you for contacting us!\n\nHow can I help you today?"
+        "Hi!\n\nThank you for contacting us!\n\nHow can I help you today?"
     ),
     (
         "Gracias",
-        "¡De nada! Siempre es un placer ayudarte. Si tienes más preguntas, estoy aquí para ti. Feliz día 🖤"
+        "¡De nada! Siempre es un placer ayudarte. Si tienes más preguntas, estoy aquí para ti. Feliz día"
     ),
     (
         "Thank you",
-        "You're welcome! It's always a pleasure to help. If you have more questions, I'm here for you. Have a nice day 🖤"
+        "You're welcome! It's always a pleasure to help. If you have more questions, I'm here for you. Have a nice day"
     ),
     
     # Compra de boletos/entradas
@@ -34,19 +34,19 @@ FAQS = [
     ),
     (
         "Quiero comprar boletas",
-        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Puedo compartirte el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets.\n\nPor favor, indícame el nombre del evento que te interesa.\n\nFeliz día 🖤"
+        "¡Hola!\n\nGracias por comunicarte con nosotros. Puedo compartirte el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets.\n\nPor favor, indícame el nombre del evento que te interesa.\n\nFeliz día"
     ),
     (
         "Me interesan unas entradas",
-        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Por favor, indícame el nombre del evento para el que deseas adquirir entradas y te compartiré el link de compra.\n\nFeliz día 🖤"
+        "¡Hola!\n\nGracias por comunicarte con nosotros. Por favor, indícame el nombre del evento para el que deseas adquirir entradas y te compartiré el link de compra.\n\nFeliz día"
     ),
     (
         "¿Cómo puedo adquirir boletas?",
-        "¡Hola! ✨\n\nGracias por comunicarte con nosotros. Te puedo proporcionar el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets. Solo necesito que me indiques el evento que te interesa.\n\nFeliz día 🖤"
+        "¡Hola!\n\nGracias por comunicarte con nosotros. Te puedo proporcionar el link del evento para que puedas visualizar los precios y realizar la compra de tus tickets. Solo necesito que me indiques el evento que te interesa.\n\nFeliz día"
     ),
     (
         "How do I buy tickets?",
-        "Hi! ✨\n\nThank you for contacting us. I can share the link to the event so you can see the prices and purchase your tickets. Please let me know which event you're interested in.\n\nHave a nice day 🖤"
+        "Hi!\n\nThank you for contacting us. I can share the link to the event so you can see the prices and purchase your tickets. Please let me know which event you're interested in.\n\nHave a nice day"
     ),
     
     # Información sobre eventos específicos

@@ -34,8 +34,8 @@ BOT_PERSONA = {
 
 # Mensajes predeterminados actualizados
 WELCOME_MESSAGES = {
-    "es": "Hola 👋, soy Camile, tu asistente virtual de Tix.do. ¿En que puedo ayudarte hoy? Puedes consultarme sobre eventos, entradas o cualquier otra duda.",
-    "en": "Hello there! 👋 I'm Camile, your virtual assistant from Tix.do. How can I help you today? You can ask me about events, tickets, or any other questions."
+    "es": "Hola, soy Camile, tu asistente virtual de Tix.do. ¿En que puedo ayudarte hoy? Puedes consultarme sobre eventos, entradas o cualquier otra duda.",
+    "en": "Hello there! I'm Camile, your virtual assistant from Tix.do. How can I help you today? You can ask me about events, tickets, or any other questions."
 }
 
 FALLBACK_MESSAGES = {
