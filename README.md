@@ -18,9 +18,9 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 1. **Branding del bot y configuración base** ✅
 2. **Entrenamiento con FAQs y ajustes conversacionales** ✅
-3. **Desarrollo de interfaz e integración web** - Desarrollo por parte del equipo de Tix.do
-   - Integración con la plataforma de eventos
-   - Implementación de la interfaz en el sitio web
+3. **Desarrollo de interfaz e integración web** ✅
+   - API REST para chat funcional (FastAPI)
+   - Interfaz web funcional (Streamlit)
 4. **Pruebas funcionales y ajustes** ✅
 5. **Entrega final y soporte post-implementación** ✅
 
@@ -33,6 +33,7 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 * Soporte automatizado 24/7
 * Escalamiento simulado a agente humano
 * Interfaz embebible en sitio web
+* API REST disponible en `/api/chat` con autenticación Bearer Token
 
 ---
 
@@ -52,7 +53,7 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 ## Estado Actual
 
 * Fase actual: **Entrega final y soporte post-implementación**
-* Entorno de desarrollo: **GitHub / Streamlit Cloud**
+* Entorno de desarrollo: **GitHub / Streamlit Cloud / FastAPI local**
 * Fecha de inicio: Mayo-09-2025
 
 ---
@@ -61,6 +62,7 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 
 * Python
 * Streamlit (versión gratuita temporal)
+* FastAPI (API REST)
 * OpenAI GPT-3.5 (API comercial)
 * GitHub (código fuente y control de versiones)
 * Replit (opcional para prototipado rápido)
@@ -73,23 +75,22 @@ Todo el código de este repositorio es propiedad de Tix.do. Este desarrollo se r
 📁 tix-o-bot/
 ├── .devcontainer/              # Reproducibilidad del entorno de desarrollo
 │   └── devcontainer.json
-├── bot/                     # Lógica del asistente
+├── bot/                        # Lógica del asistente
 │   ├── __init__.py
-│   ├── assistant.py         # Clase principal del bot Camile
-│   └── knowledge_base.py    # Base de preguntas frecuentes
-├── utils/                   # Funciones auxiliares
+│   ├── assistant.py            # Clase principal del bot Camile
+│   └── knowledge_base.py       # Base de preguntas frecuentes
+├── utils/                      # Funciones auxiliares
 │   ├── __init__.py
 │   └── helpers.py
-├── venv/                    # Entorno virtual (excluido del repo)
-├── .env                     # Variables de entorno locales
+├── .env                        # Variables de entorno locales
 ├── .gitignore
-├── config.py                # Configuraciones globales del bot
-├── main.py                  # Entrada principal (Streamlit UI)
-├── main_simple.py           # Versión simple del bot (modo demo)
-├── test_bot.py              # Script de prueba en consola
-├── requirements.txt         # Dependencias del proyecto
-└── README.md                # Este documento
-└── test_bot                 # Script para probar el bot desde consola
+├── api.py                      # API REST en FastAPI para integración externa
+├── config.py                   # Configuraciones globales del bot
+├── main.py                     # Interfaz completa en Streamlit
+├── main_simple.py              # Versión simple del bot (modo demo)
+├── test_bot.py                 # Script de prueba en consola
+├── requirements.txt            # Dependencias del proyecto
+└── README.md                   # Este documento
 ```
 
 ---
@@ -102,36 +103,33 @@ Este proyecto es de uso exclusivo de Tix.do. No se permite su redistribución ni
 
 ## Contacto
 
-Desarrollado por Ean Jimenez
+Desarrollado por Ean Jimenez  
 Contacto: ean.jimenez97@gmail.com
 
 ---
 
 ## Archivos Clave
 
-### main.py
+### `main.py`
+Interfaz web desarrollada con Streamlit para interacción en tiempo real.
 
-Interfaz en Streamlit que conecta con el bot y permite chatear en tiempo real.
+### `api.py`
+API REST usando FastAPI. Expone el endpoint `/api/chat` para recibir mensajes y responder usando GPT-3.5.
 
-### test\_bot.py
+### `config.py`
+Define idioma por defecto, nombre del bot, clave API de OpenAI, personalidad del asistente y otros valores base.
 
-Script para validar respuestas del bot desde consola.
-
-### config.py
-
-Define idioma, nombre del bot, API Key de OpenAI, mensajes predefinidos y personalidad.
-
-### requirements.txt
-
-```
+### `requirements.txt`
+```txt
 streamlit
 openai
 tenacity
 python-dotenv
+fastapi
+uvicorn
 ```
 
-### .env copy.example
-
+### `.env copy.example`
 ```bash
 OPENAI_API_KEY=sk-...
 DEFAULT_LANGUAGE=es
